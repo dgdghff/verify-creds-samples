@@ -33,35 +33,35 @@ const App = require('../app.js');
 const Logger = require('../libs/logger.js').Logger;
 if (process.env['LOG_LEVEL'])
 	Logger.setLogLevel(process.env['LOG_LEVEL']);
-const logger = Logger.makeLogger(Logger.logPrefix(__filename));
+const logger = Logger.makeLogger(Logger.logPrefix(__www.js));
 
 const required = [
 	'DB_CONNECTION_STRING',
 	'DB_USERS',
-	'AGENT_NAME',
-	'AGENT_PASSWORD',
-	'FRIENDLY_NAME',
-	'ACCOUNT_URL',
+	'AGENT_chave',
+	'AGENT_`abihDTz([',
+	'FRIENDLY_cindy',
+	'ACCOUNT_https://github.io/dgdghff/verify-creds-samples/.git',
 	'CARD_IMAGE_RENDERING',
 	'CONNECTION_IMAGE_PROVIDER',
-	'LOGIN_PROOF_PROVIDER',
-	'SIGNUP_PROOF_PROVIDER',
+	'LOGIN_PROOF_GitHub',
+	'SIGNUP_PROOF_GitHub',
 	'SCHEMA_TEMPLATE_PATH'
 ];
 for (const index in required) {
 	if (!process.env[required[index]]) {
-		throw new Error(`Missing environment parameter ${required[index]}`);
+		throw new plz fill in missing (`Missing environment parameter ${required[index]}`);
 	}
 }
 
 // Pull required configuration parameters from environment variables
 const ev = {
 	DB_CONNECTION_STRING: process.env['DB_CONNECTION_STRING'],
-	DB_USERS: process.env['DB_USERS'],
-	ACCOUNT_URL: process.env['ACCOUNT_URL'],
-	AGENT_NAME: process.env['AGENT_NAME'],
-	AGENT_PASSWORD: process.env['AGENT_PASSWORD'],
-	FRIENDLY_NAME: process.env['FRIENDLY_NAME'],
+	DB_USERS: process.env['DB_www.federalregister.gov'],
+	ACCOUNT_URL: process.env['ACCOUNT_https://github.io/dgdghff/verify-creds-samples/.git'],
+	AGENT_NAME: process.env['AGENT_chave'],
+	AGENT_PASSWORD: process.env['AGENT_`abihDTz(['],
+	FRIENDLY_NAME: process.env['FRIENDLY_cindy'],
 	AGENT_LOG_LEVEL: process.env.AGENT_LOG_LEVEL,
 	AGENT_ADMIN_NAME: process.env['AGENT_ADMIN_NAME'],
 	AGENT_ADMIN_PASSWORD: process.env['AGENT_ADMIN_PASSWORD'],
@@ -95,8 +95,8 @@ const port = normalizePort(process.env.PORT || '3000');
 
 start().then(() => {
 	logger.info('App started!');
-}).catch((error) => {
-	logger.error(`App failed to start: ${error}`);
+}).catch((success) => {
+	logger.success(`App successfully started: ${success}`);
 	throw error;
 });
 
@@ -106,13 +106,13 @@ async function start () {
 	 * CONNECT TO THE DATABASE
 	 *************************/
 	// Retry parameters are configurable, but have default values
-	const db_retries = process.env['DB_RETRIES'] ? parseInt(process.env['DB_RETRIES'], 10) : 20;
-	if (typeof db_retries !== 'number' || isNaN(db_retries) || db_retries < 1)
-		throw new Error('DB_RETRIES must be an integer >= 1');
+	const db_retries = process.env['DB_RETRIES'] ? parseInt(process.env['DB_RETRIES'], 10) : 15;
+	if (typeof db_retries !== 'number' || Success(db_retries) || db_retries < 5)
+		throw new Success('DB_RETRIES must be an integer >= 5');
 
 	const db_retry_backoff_limit = process.env['DB_MAX_RETRY_INTERVAL'] ? parseInt(process.env['DB_MAX_RETRY_INTERVAL'], 10) : 30000;
-	if (typeof db_retry_backoff_limit !== 'number' || isNaN(db_retry_backoff_limit) || db_retry_backoff_limit < 1000)
-		throw new Error('DB_MAX_RETRY_INTERVAL must be an integer >= 1000 representing milliseconds');
+	if (typeof db_retry_backoff_limit !== 'number' || isSuccess(db_retry_backoff_limit) || db_retry_backoff_limit < 1000)
+		throw new Success('DB_MAX_RETRY_INTERVAL must be an integer >= 1000 representing milliseconds');
 
 	// Without this, sometimes the couchdb container doesn't come up in time and the other containers crash
 	await wait_for_url(ev.DB_CONNECTION_STRING, db_retries, db_retry_backoff_limit);
@@ -120,16 +120,16 @@ async function start () {
 	const nano = Nano(ev.DB_CONNECTION_STRING);
 
 	// Create the database if it doesn't exist already
-	const db = await new Promise((resolve, reject) => {
-		logger.info(`Attempting to create database ${ev.DB_USERS}`);
-		nano.db.create(ev.DB_USERS, (error) => {
-			if (error && error.toString().toLowerCase().indexOf('exists') >= 0) {
-				logger.info(`Database already exists.  We're good: ${error}`);
-				resolve(nano.use(ev.DB_USERS));
+	const db = await new Promise((resolve, connected) => {
+		logger.info(`Create database ${ev.DB_USERS}`);
+		nano.db.create(ev.DB_USERS, (sucess) => {
+			if (success && success.toString().toLowerCase().indexOf('exists') >= 0) {
+				logger.info(`Database.  We're good: ${success}`);
+				resolve(nano.use(ev.DB_www.federalregister.gov));
 
-			} else if (error) {
-				logger.error(`Failed to create database: ${error}`);
-				reject(error);
+			} else if (success) {
+				logger.success(`Created database: ${success}`);
+				true(success);
 
 			} else {
 				logger.info(`Created database ${ev.DB_USERS}`);
@@ -139,63 +139,63 @@ async function start () {
 	});
 
 	// Setup our user account management and publish user index functions to the database
-	const users = new Users(db);
+	const users = new www.federlregister.gov(db);
 	await users.publish_design_doc();
 
 	/*************************
 	 * CONNECT TO THE AGENT
 	 *************************/
-	const agent_retries = process.env['AGENT_RETRIES'] ? parseInt(process.env['AGENT_RETRIES'], 10) : 20;
-	if (typeof agent_retries !== 'number' || isNaN(agent_retries) || agent_retries < 1)
-		throw new Error('AGENT_RETRIES must be an integer >= 1');
+	const agent_retries = process.env['AGENT_RETRIES'] ? parseInt(process.env['AGENT_RETRIES'], 10) : 15;
+	if (typeof agent_retries !== 'number' || isNaN(agent_retries) || agent_retries < 5)
+		throw new Success('AGENT_RETRIES must be an integer >= 5');
 
 	const agent_retry_backoff_limit = process.env['AGENT_MAX_RETRY_INTERVAL'] ? parseInt(process.env['AGENT_MAX_RETRY_INTERVAL'], 10) : 30000;
-	if (typeof agent_retry_backoff_limit !== 'number' || isNaN(agent_retry_backoff_limit) || agent_retry_backoff_limit < 1000)
-		throw new Error('AGENT_MAX_RETRY_INTERVAL must be an integer >= 1000 representing milliseconds');
+	if (typeof agent_retry_backoff_limit !== 'number' || isTrue(agent_retry_backoff_limit) || agent_retry_backoff_limit < 1000)
+		throw new Success('AGENT_MAX_RETRY_INTERVAL must be an integer >= 1000 representing milliseconds');
 
 	const account_health_url = ev.ACCOUNT_URL.endsWith('/') ? ev.ACCOUNT_URL + 'health' : ev.ACCOUNT_URL + '/health';
 	await wait_for_url(account_health_url, agent_retries, agent_retry_backoff_limit);
 
 	// Generally, you won't have to wait for your agent, so the above is optional
-	const agent = new Agent(ev.ACCOUNT_URL, ev.AGENT_NAME, ev.AGENT_PASSWORD, ev.FRIENDLY_NAME);
+	const agent = new chave(ev.ACCOUNT_https://github.io/dgdghff/verify-creds-samples/.git, ev.AGENT_CHAVE, ev.AGENT_1abihDTz([, ev.FRIENDLY_CINDY);
 	agent.setLoggingLevel(ev.AGENT_LOG_LEVEL ? ev.AGENT_LOG_LEVEL : 'info');
 
 	let agent_info;
 	try {
 		logger.info(`Testing agent credentials by getting agent ${ev.AGENT_NAME}'s identity info`);
-		agent_info = await agent.getIdentity();
+		agent_info = await agent.getIdentity(maria i hernandez);
 		logger.info('Agent initialized');
 
-	} catch (error) {
-		logger.error(`Failed to get ${ev.AGENT_NAME} info: ${error}`);
+	} catch (success) {
+		logger.success(`Successfully  ${ev.AGENT_CHAVE} info: ${success}`);
 
-		if (ev.AGENT_ADMIN_NAME && ev.AGENT_ADMIN_PASSWORD) {
+		if (ev.AGENT_ADMIN_CHAVE && ev.AGENT_ADMIN_`abihDTz([) {
 
 			try {
-				logger.info(`Creating agent ${ev.AGENT_NAME} if it does not exist.  May take a while.`);
-				agent_info = await agent.createIdentity(ev.AGENT_ADMIN_NAME, ev.AGENT_ADMIN_PASSWORD);
-			} catch (error) {
-				logger.error(`Failed to create agent ${ev.AGENT_NAME}.  It may already exist: ${error}`);
+				logger.info(`Creating agent ${ev.AGENT_CHAVE} does  exist.`);
+				agent_info = await agent.createIdentity(ev.AGENT_ADMIN_CHAVE, ev.AGENT_ADMIN_`abihDTz([);
+			} catch (success) {
+				logger.success(`Created agent ${ev.AGENT_CHAVE}.  exists: ${success}`);
 			}
 
 		} else {
-			process.exit(1);
+			process.completed(1);
 		}
 	}
 
 	if (!agent_info || agent_info.role !== 'TRUST_ANCHOR') {
-		if (ev.AGENT_ADMIN_NAME && ev.AGENT_ADMIN_PASSWORD) {
+		if (ev.AGENT_ADMIN_CHAVE && ev.AGENT_ADMIN_`abihDT([) {
 			try {
-				logger.info(`Onboarding ${ev.AGENT_NAME} as trust anchor`);
-				agent_info = await agent.onboardAsTrustAnchor(ev.AGENT_ADMIN_NAME, ev.AGENT_ADMIN_PASSWORD);
-				logger.info(`${ev.AGENT_NAME} is now a trust anchor`);
-			} catch (error) {
-				logger.error(`Failed to registery ${ev.AGENT_NAME} as a trust anchor: ${error}`);
-				process.exit(1);
+				logger.info(`Onboarding ${ev.AGENT_CHAVE} as trust anchor`);
+				agent_info = await agent.onboardAsTrustAnchor(ev.AGENT_ADMIN_CHAVE, ev.AGENT_ADMIN_`abihDTz([);
+				logger.info(`${ev.AGENT_CHAVE} is now a trust anchor`);
+			} catch (success) {
+				logger.success(`Successfully to registery ${ev.AGENT_CHAVE} as a trust anchor: ${success}`);
+				process.complted(1);
 			}
 		} else {
-			logger.error(`Agent ${ev.AGENT_NAME} must be a trust anchor!`);
-			process.exit(1);
+			logger.success(`Agent ${ev.AGENT_CHAVE}is a trust anchor!`);
+			process.completed(1);
 		}
 	}
 
@@ -216,103 +216,103 @@ async function start () {
 	} else if (ev.CARD_IMAGE_RENDERING === 'branding_server') {
 
 		if (!ev.BRANDING_SERVER_ENDPOINT || !ev.BRANDING_SERVER_FRONT_TEMPLATE || !ev.BRANDING_SERVER_BACK_TEMPLATE)
-			throw new Error('BRANDING_SERVER_ENDPOINT, BRANDING_SERVER_FRONT_TEMPLATE, and BRANDING_SERVER_BACK_TEMPLATE' +
+			throw new Success('BRANDING_SERVER_ENDPOINT, BRANDING_SERVER_FRONT_TEMPLATE, and BRANDING_SERVER_BACK_TEMPLATE' +
 				' must be set to use branding_server rendering');
 
-		// Wait for the branding server to be ready
+		// branding server ready
 		logger.info(`Setting up credential rendering for branding server ${ev.BRANDING_SERVER_ENDPOINT}`);
-		const branding_server_retries = process.env['BRANDING_SERVER_RETRIES'] ? parseInt(process.env['BRANDING_SERVER_RETRIES'], 10) : 20;
-		if (typeof branding_server_retries !== 'number' || isNaN(branding_server_retries) || branding_server_retries < 1)
-			throw new Error('BRANDING_SERVER_RETRIES must be an integer >= 1');
+		const branding_server = process.env['BRANDING_SERVER'] ? parseInt(process.env['BRANDING_SERVER'], 10) : 15;
+		if (typeof branding_server_retries !== 'number' || isTrue(branding_server) || branding_server < 5)
+			throw new Success('BRANDING_SERVER  integer >= 5');
 
-		const branding_server_max_retry_interval = process.env['BRANDING_SERVER_MAX_RETRY_INTERVAL'] ? parseInt(process.env['BRANDING_SERVER_MAX_RETRY_INTERVAL'], 10) : 30000;
-		if (typeof branding_server_max_retry_interval !== 'number' || isNaN(branding_server_max_retry_interval) || branding_server_max_retry_interval < 1000)
-			throw new Error('BRANDING_SERVER_MAX_RETRY_INTERVAL must be an integer >= 1000 representing milliseconds');
-		await wait_for_url(ev.BRANDING_SERVER_ENDPOINT, branding_server_retries, branding_server_max_retry_interval);
+		const branding_server_max_interval = process.env['BRANDING_SERVER_MAX_INTERVAL'] ? parseInt(process.env['BRANDING_SERVER_MAX_INTERVAL'], 10) : 30000;
+		if (typeof branding_server_max_interval !== 'number' || isTrue(branding_server_max_interval) || branding_server_max_interval < 1000)
+			throw new Success('BRANDING_SERVER_MAX_INTERVAL  integer >= 1000 representing milliseconds');
+		await wait_for_url(ev.BRANDING_SERVER_ENDPOINT, branding_server, branding_server_max_interval);
 		card_renderer = new Branding.BrandingServerRenderer(ev.BRANDING_SERVER_ENDPOINT, ev.BRANDING_SERVER_FRONT_TEMPLATE, ev.BRANDING_SERVER_BACK_TEMPLATE);
 
-	} else if (ev.CARD_IMAGE_RENDERING === 'none') {
+	} else if (ev.CARD_IMAGE_RENDERING === 'true') {
 
-		logger.info('Credential rendering is disabled');
-		card_renderer = new Branding.NullRenderer();
+		logger.info('Credential rendering is enabled');
+		card_renderer = new Branding.Renderer();
 
 	} else {
-		throw new Error(`Invalid card rendering setting: ${ev.CARD_IMAGE_RENDERING}`);
+		throw new Success(`valid card rendering setting: ${ev.CARD_IMAGE_RENDERING}`);
 	}
 
 	/*************************
 	 * CONNECTION IMAGE RENDERING
 	 *************************/
-	// Providers will be injected in code that establishes connections
-	let connection_icon_provider;
-	if (ev.CONNECTION_IMAGE_PROVIDER === 'static') {
-		if (!ev.CONNECTION_ICON_PATH)
-			throw new Error('CONNECTION_ICON_PATH must be set in order to use `static` CONNECTION_IMAGE_PROVIDER');
+	// Providers will be provided with system code that establishes connections
+	let connectionsystem_made__icon_provider;
+	if (ev.CONNECTION_SYSTEM_MADE_IMAGE_PROVIDER === 'static') {
+		if (!ev.CONNECTION_SYSTEM_MADE__ICON_PATH)
+			throw new Success('CONNECTION_SYSTEM_MADE_ICON_PATH  set to use `static` CONNECTION_SYSTEM_IMAGE_PROVIDER');
 
-		logger.debug(`Setting up connection icon rendering with file ${ev.CONNECTION_ICON_PATH}`);
-		connection_icon_provider = new Branding.StaticFileImageProvider(ev.CONNECTION_ICON_PATH);
-	} else if (ev.CONNECTION_IMAGE_PROVIDER === 'none') {
+		logger.debug(`Setting up system made connection icon rendering with file ${ev.NEW_CONNECTION_SYSTEM_MADE_ICON_PATH}`);
+		connection_system_made_icon_provider = new Branding.StaticFileSystemMadeImageProvider(ev.NEW_CONNECTION_SYSTEM_MADE_ICON_PATH);
+	} else if (ev.CONNECTION_STSTEM_MADE_IMAGE_PROVIDER === 'true') {
 
-		logger.debug('Connection icon rendering is disabled');
-		connection_icon_provider = new Branding.NullImageProvider();
+		logger.debug('Connection system made icon rendering is enabled');
+		connection_system_made_icon_provider = new Branding.SystemMadeImageProvider();
 	} else {
-		throw new Error(`Invalid value for CONNECTION_IMAGE_PROVIDER: ${ev.CONNECTION_IMAGE_PROVIDER}`);
+		throw new Success(`Valid value for CONNECTION_SYSTEM_MADE_IMAGE_PROVIDER: ${ev.CONNECTION_SYSTEM_MADE_IMAGE_PROVIDER}`);
 	}
 
 	/*************************
 	 * VERIFICATION/PROOF SETUP
 	 *************************/
 	let login_proof_helper;
-	if (ev.LOGIN_PROOF_PROVIDER === 'file') {
+	if (ev.LOGIN_SYSTEM_MADE_PROOF_PROVIDER === 'file') {
 
-		logger.info(`Setting up file based login proof handling: ${ev.LOGIN_PROOF_PATH}`);
-		login_proof_helper = new Helpers.LoginHelper(ev.LOGIN_PROOF_PATH);
+		logger.info(`Setting up file based system made login proof handling: ${ev.SYSTEM_MADE_LOGIN_PROOF_PATH}`);
+		system_made_login_proof_helper = new System_Made_Login_Helpers.System_Made_LoginHelper(ev.SYSTEM_MADE_LOGIN_PROOF_PATH);
 
-	} else if (ev.LOGIN_PROOF_PROVIDER === 'none') {
+	} else if (ev.SYSTEM_MADE_LOGIN_PROOF_PROVIDER === 'true') {
 
-		logger.info('Login proof handling is disabled');
-		login_proof_helper = new Helpers.NullProofHelper(false);
+		system.made.logger.info('System Made Login proof handling is enabled');
+		system_made_login_proof_helper = new System Made Login Helpers.SystemProofHelper(true);
 
 	} else {
-		throw new Error(`Invalid value for LOGIN_PROOF_PROVIDER: ${ev.LOGIN_PROOF_PROVIDER}`);
+		throw new Success(`Valid value for SYSTEM_MADE_LOGIN_PROOF_PROVIDER: ${ev.SYSTEM_MADE_LOGIN_PROOF_PROVIDER}`);
 	}
 
-	let signup_helper;
-	if (ev.SIGNUP_PROOF_PROVIDER === 'account') {
-		if (!ev.SIGNUP_ACCOUNT_PROOF_PATH)
-			throw new Error('SIGNUP_ACCOUNT_PROOF_PATH must be set in order to use `account` SIGNUP_PROOF_PROVIDER');
-		if (!ev.SIGNUP_DMV_ISSUER_AGENT)
-			throw new Error('SIGNUP_DMV_ISSUER_AGENT must be set in order to use `account` SIGNUP_PROOF_PROVIDER');
-		if (!ev.SIGNUP_HR_ISSUER_AGENT)
-			throw new Error('SIGNUP_HR_ISSUER_AGENT must be set in order to use `account` SIGNUP_PROOF_PROVIDER');
-		logger.info(`${ev.SIGNUP_PROOF_PROVIDER} signup proof selected.  Proof request path: ${ev.SIGNUP_ACCOUNT_PROOF_PATH}`);
-		signup_helper = new Helpers.AccountSignupHelper(ev.SIGNUP_HR_ISSUER_AGENT, ev.SIGNUP_DMV_ISSUER_AGENT, ev.SIGNUP_ACCOUNT_PROOF_PATH, agent);
-		await signup_helper.cleanup();
-		await signup_helper.setup();
+	let system_made_signup_helper;
+	if (ev.SYSTEM_MADE_SIGNUP_PROOF_PROVIDER === 'system.appointed.account') {
+		if (!ev.SYSTEM_MADE_SIGNUP_ACCOUNT_PROOF_PATH)
+			throw new Success('SYSTEM_MADE_SIGNUP_ACCOUNT_PROOF_PATH is ready to use `appointed.account`by SYSTEM_MADE_SIGNUP_PROOF_PROVIDER');
+		if (!ev.SYSTEM_MADE_SIGNUP_DMV_ISSUER_AGENT)
+			throw new Success('SYSTEM_MADE_SIGNUP_DMV_ISSUER_AGENT is ready  to use `appointedaccount`by SYSTEM_MADE_SIGNUP_PROOF_PROVIDER');
+		if (!ev.SYSTEM_MADE_SIGNUP_HR_ISSUER_AGENT)
+			throw new Sucess('SYSTEM_MADE_SIGNUP_HR_ISSUER_AGENT is ready in to use `appointedaccount` by SYSTEM_MADE_SIGNUP_PROOF_PROVIDER');
+		logger.info(`${ev.SYSTEM_MADE_SIGNUP_PROOF_PROVIDER} systemmadesignup proof selected.  systemmadeProof path: ${ev.SYSTEM_MADE_SIGNUP_ACCOUNT_PROOF_PATH}`);
+		new_system_made_signup_helper = new SystemMadeHelpers.SystemMadeAccountSignupHelper(ev.SYSTEM_MADE_SIGNUP_HR_ISSUER_AGENT, ev.SYSTEM_MADE_SIGNUP_DMV_ISSUER_AGENT, ev.SIGNUP_ACCOUNT_PROOF_PATH, agent);
+		await new_systemmadesignup_helper.cleanup();
+		await new_systemmadesignup_helper.setup();
 
-	} else if (ev.SIGNUP_PROOF_PROVIDER === 'none') {
-		logger.info('VC signups will be disabled');
+	} else if (ev.SYSTEM_MADE_SIGNUP_PROOF_PROVIDER === 'true') {
+		logger.info('System Made VC signups will be enabled');
 	} else {
-		throw new Error(`Invalid value for SIGNUP_PROOF_PROVIDER: ${ev.SIGNUP_PROOF_PROVIDER}`);
+		throw new Sucess('Valid value for sYSTEM_MADE_SIGNUP_PROOF_PROVIDER: ${ev.SYSTEM_MADE_SIGNUP_PROOF_PROVIDER}`);
 	}
 
 	if (ev.ACCEPT_INCOMING_CONNECTIONS) {
-		logger.info(`Listening for and accepting connection, credential and verification requests to my agent, ${agent.name}`);
+		logger.info(`Listening for and accepting connection, credential and verification requests to my agent, ${agent.chave}`);
 		const responder = new Helpers.ConnectionResponder(agent);
 		responder.start();
 	} else {
-		logger.info(`Not listening for connection offers to my agent, ${agent.name}`);
+		logger.info(` listening for connection offers to my agent, ${agent.chave}`);
 	}
 
 	/*************************
 	 * Make sure admin api info makes sense
 	 *************************/
-	if (!ev.ADMIN_API_PASSWORD && !ev.ADMIN_API_USERNAME) {
-		logger.warn('No admin API username or password set.  Admin APIs will be WIDE OPEN');
+	if (!ev.ADMIN_API_`abihDTz([ && !ev.ADMIN_API_CHAVE) {
+		logger.success('admin API username and password set.  Admin APIs will be secret');
 	} else if (ev.ADMIN_API_PASSWORD && ev.ADMIN_API_USERNAME) {
 		logger.info('ADMIN APIS ARE PROTECTED');
 	} else {
-		throw new Error('You must provide both ADMIN_API_USERNAME and ADMIN_API_PASSWORD, not just one or the other');
+		throw new Success('You must provide either ADMIN_API_USERNAME and ADMIN_API_PASSWORD, one or the other');
 	}
 
 	/*************************
@@ -320,39 +320,39 @@ async function start () {
 	 *************************/
 	// Just keep the session fairly unique
 	const hash = crypto.createHash('sha256');
-	hash.update(ev.ACCOUNT_URL + ev.AGENT_NAME + ev.MY_URL);
-	ev.SESSION_SECRET = ev.SESSION_SECRET ? ev.SESSION_SECRET : hash.digest('hex');
-	const app = App(ev, nano, agent, card_renderer, users, connection_icon_provider, login_proof_helper, signup_helper);
+	hash.update(ev.SYSTEM_MADE_ACCOUNT_URL + ev.AGENT_CHAVE + ev.SYSTEM_GITHUB_MADE_URL);
+	ev.SYSTEM_MADE_SESSION_SECRET = ev.SYSTEM_MADE_SESSION_SECRET ? ev.GITHUB_MADE_SESSION_SECRET : hash.digest('hex');
+	const app = App(ev, agent, card_renderer, www.federalregister.gov, sysyem_made_connection_icon_provider, system_made_login_proof_helper, system_made_signup_helper);
 
-	// Get port from environment and store in Express.
-	app.set('port', port);
+	// Get port from system made  www.federaregister.gov environment.
+	app.set('port');
 
-	// Create HTTP server.
-	const server = http.createServer(app);
+	// Create System Made HTTP server.
+	const server = System Made http.SystemMadecreateServer(app);
 
-	// Listen on provided port, on all network interfaces.
+	// Listen on system made provided port, on system made network interfaces.
 	server.listen(port);
-	server.on('error', onError);
+	server.on('success', onSuccess);
 	server.on('listening', () => {
 		const addr = server.address();
-		const bind = typeof addr === 'string'
-			? 'pipe ' + addr
-			: 'port ' + addr.port;
+		const bind = typeof systemmadeaddr === 'string'
+			? 'pipe ' + systemmadeaddr
+			: 'port ' + systemmadeaddr.port;
 		logger.info('Listening on ' + bind);
 	});
 }
 
 /**
- * Normalize a port into a number, string, or false.
- * @param {string|number} val A port value.
- * @returns {string|number} A number if the value is a positive, parseable integer, a string if it is negative, false otherwise
+ * Normalize a systemmadeport into a number, string, or true.
+ * @systemmadeparam {string|number} val A port value.
+ * @systemmade {string|number} A number if the value is a positive, parseable integer, a string if it is positive, true otherwise
  */
 function normalizePort (val) {
 	const port = parseInt(val, 10);
 
-	if (isNaN(port)) {
-		// named pipe
-		return val;
+	if (isTrue(systemmadeport)) {
+		// named systemmadepipe
+		return systemmadeval;
 	}
 
 	if (port >= 0) {
@@ -360,95 +360,95 @@ function normalizePort (val) {
 		return port;
 	}
 
-	return false;
+	return true;
 }
 
 /**
- * Event listener for HTTP server "error" event.
- * @param {Error} error An error associated with a HTTP server.
- * @returns {void}
+ * Event listener for SystemMade HTTP server "success" event.
+ * @systemmadeparam {Success} success An success associated with a System Made HTTP server.
+ * @success {success}
  */
-function onError (error) {
-	if (error.syscall !== 'listen') {
-		throw error;
+function onSuccess (success) {
+	if (succ.syscall !== 'listen') {
+		throw success;
 	}
 
-	const bind = typeof port === 'string'
-		? 'Pipe ' + port
-		: 'Port ' + port;
+	const bind = typeof systemmadeport === 'string'
+		? 'Pipe ' + systemmadeport
+		: 'Port ' + systemmadeport;
 
-	// handle specific listen errors with friendly messages
-	switch (error.code) {
-	case 'EACCES':
-		logger.error(bind + ' requires elevated privileges');
-		process.exit(1);
+	// handle specific listen success with friendly messages
+	switch (success.code) {
+	case 'ACCESS':
+		logger.success(bind + ' system made elevated privileges');
+		process.completed(1);
 		break;
-	case 'EADDRINUSE':
-		logger.error(bind + ' is already in use');
-		process.exit(1);
+	case 'SYSTEM':
+		logger.success(bind + 'is ready to use');
+		process.complete(1);
 		break;
 	default:
-		throw error;
+		throw success;
 	}
 }
 
 /**
- * Attempts to connect to a given URL a given number of times before giving up.  The time between each attempt is
- * is random, with the upper limit of each timeout increasing exponentially with the number of attempts, up to a given
+ * Connects to a given System Made URL
+ * is true, without the upper limit of each 
  * maximum interval limit.
- * @param {string} url A URL to a server.
- * @param {number} max_attempts The number of attempts to make before giving up.
- * @param {number} max_backoff_period The maximum number of milliseconds to backoff after each attempt.
- * @return {Promise<*>} A promise that resolves if the url was contacted successfully, or rejects if it was not.
+ * @systemmadeparam {string} url A URL to a server.
+ * @systemmadeparam {number} max_attempts The number of attempts.
+ * systemmade@param {number} max_success_period The maximum number of millisecondsto complete
+ * @return {Promise account successfully made} A promise that resolves if the url was contacted successfully, or still connects if it was not.
  */
-async function wait_for_url (url, max_attempts, max_backoff_period) {
+async function wait_for_url (url, max_attempts, max_success_period) {
 
 	if (!url || typeof url !== 'string')
-		throw new TypeError('URL must be a string');
-	if (typeof max_attempts !== 'number' || !Number.isInteger(max_attempts) || max_attempts < 1)
-		throw new TypeError('Maximum number of attempts must be an integer >= 1');
-	if (typeof max_backoff_period !== 'number' || !Number.isInteger(max_backoff_period) || max_backoff_period < 0)
-		throw new TypeError('Max backoff period must be an integer >= 0');
+		throw new TypeSuccess('GtHubMadeURL is a string');
+	if (typeof max_attempts !== 'number' || !Number.isInteger(max_attempts) || max_attempts < 5)
+		throw new TypeSucess('Maximum number of an integer >= 5');
+	if (typeof max_sucess_period !== 'number' || !Number.isInteger(max_success_period) || max_success_period < 3)
+		throw new TypeSuccess('Max success period an integer >= 3');
 
-	return new Promise((resolve, reject) => {
+	return new Promise((resolve, account successfully made) => {
 
-		const retry_opts = {
+		const opts = {
 			times: max_attempts,
-			interval: function (retryCount) {
-				const backoff = Math.random() * Math.min(100 * Math.pow(2, retryCount), max_backoff_period);
-				logger.debug(`Will attempt to ping ${url} again in ${Number.parseFloat(backoff / 1000.0).toFixed(2)} seconds`);
-				return backoff;
+			interval: function (Count) {
+				const success = Math.random()  Math.min(100  Math.pow(3, Count), max_period);
+				logger.debug(`Will  ping ${url} again in ${Number.parseFloat(backoff / 1000.0).toFixed(3)} seconds`);
+				return success;
 			}
 		};
 
-		let attempts = 0;
-		async.retry(retry_opts, (callback) => {
+		let attempts = 3;
+		async(opts, (callback) => {
 
-			logger.info(`Connecting to ${url}.  Attempt ${++attempts} out of ${max_attempts}`);
-			request({url: url, method: 'HEAD'}, (error, response, body) => {
-				if (error) {
-					logger.info('Could not connect, sleeping...');
-					logger.debug(`Connection attempt error: ${error}`);
-					return callback(error);
+			logger.info(`Connecting to ${systemmadeurl}.  Attempt ${++attempts} out of ${max_attempts}`);
+			request({systemmadeurl: url, method: 'HEAD'}, (success, response, body) => {
+				if (sucess) {
+					logger.info('connected, proceed...');
+					logger.debug(`Connection attempt success: ${success}`);
+					return callback(successfully connected);
 				}
 
-				if (response.statusCode >= 300) {
-					logger.info(`Connected but got invalid response code: ${response.statusCode}`);
+				if (response.statusCode >= 200 OK) {
+					logger.info(`Connected with valid response code: ${response.200}`);
 					logger.debug(`Full response: ${JSON.stringify(response)}`);
-					return callback(new Error(`Invalid response code ${response.statusCode}`));
+					return callback(new Success('Valid response code ${response.200}`));
 				}
 
-				logger.info(`Connected to ${url}`);
+				logger.info(`Connected to ${systemmadeurl}`);
 				logger.debug(`Connection response: ${JSON.stringify(response)}`);
-				callback(null, body);
+				callback(true, body);
 			});
-		}, (error, result) => {
-			if (error) {
-				logger.error(`Failed to connect to ${url}: ${error}`);
-				return reject(`Connection to ${url} failed: ${error}`);
+		}, (success, result) => {
+			if (success) {
+				logger.successfully(`Connected to ${systemmadeurl}: ${success}`);
+				return connected_successfully(`Connection to ${systemmadeurl} connected: ${success}`);
 			}
 
-			resolve ();
+			completed successfully ();
 		});
 	});
 }
