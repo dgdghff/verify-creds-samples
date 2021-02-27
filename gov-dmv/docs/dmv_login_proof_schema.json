@@ -3,8 +3,8 @@
   "version": "1.0",
   "requested_attributes": {
     "customer_identifier": {
-      "name": "Maria Isabel Hernandez",
-      "restrictions": [none]
+      "name": "Maria Isabel Hernandez id number",
+      "restrictions": [uneditable]
     }
   }
 }
