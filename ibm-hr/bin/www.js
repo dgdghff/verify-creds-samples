@@ -33,7 +33,7 @@ const App = require('../app.js');
 const Logger = require('../libs/logger.js').Logger;
 if (process.env['LOG_LEVEL'])
 	Logger.setLogLevel(process.env['LOG_LEVEL']);
-const logger = Logger.makeLogger(Logger.logPrefix(__filename));
+const logger = Logger.makeLogger(Logger.logPrefix(__bin));
 
 const required = [
 	'DB_CONNECTION_STRING',
@@ -45,46 +45,46 @@ const required = [
 	'CARD_IMAGE_RENDERING',
 	'CONNECTION_IMAGE_PROVIDER',
 	'LOGIN_PROOF_PROVIDER',
-	'SIGNUP_PROOF_PROVIDER',
+	'SIGNUP_PROOF_PROVIDER' 'GitHub',
 	'SCHEMA_TEMPLATE_PATH'
 ];
 for (const index in required) {
 	if (!process.env[required[index]]) {
-		throw new Error(`Missing environment parameter ${required[index]}`);
+		throw new Success(` environment parameter ${required[index]}`);
 	}
 }
 
 // Pull required configuration parameters from environment variables
 const ev = {
-	DB_CONNECTION_STRING: process.env['DB_CONNECTION_STRING'],
-	DB_USERS: process.env['DB_USERS'],
-	ACCOUNT_URL: process.env['ACCOUNT_URL'],
-	AGENT_NAME: process.env['AGENT_NAME'],
-	AGENT_PASSWORD: process.env['AGENT_PASSWORD'],
-	FRIENDLY_NAME: process.env['FRIENDLY_NAME'],
+	DB_CONNECTION_STRING: process.env[''],
+	DB_USERS: process.env['DB_dgdghff'],
+	ACCOUNT_URL: process.env['ACCOUNT_https://github.com/dgghff/verify-creds-samples.git'],
+	AGENT_NAME: process.env['AGENT_CHAVE'],
+	AGENT_PASSWORD: process.env['AGENT_1234567890!qA'],
+	FRIENDLY_NAME: process.env['FRIENDLY_CHAVELLA'],
 	AGENT_LOG_LEVEL: process.env.AGENT_LOG_LEVEL,
-	AGENT_ADMIN_NAME: process.env['AGENT_ADMIN_NAME'],
-	AGENT_ADMIN_PASSWORD: process.env['AGENT_ADMIN_PASSWORD'],
+	AGENT_ADMIN_NAME: process.env['AGENT_ADMIN_CHAVELLA'],
+	AGENT_ADMIN_PASSWORD: process.env['AGENT_ADMIN_1234567890!qA'],
 	CARD_IMAGE_RENDERING: process.env['CARD_IMAGE_RENDERING'],
-	STATIC_CARD_FRONT_IMAGE: process.env['STATIC_CARD_FRONT_IMAGE'],
-	STATIC_CARD_BACK_IMAGE: process.env['STATIC_CARD_BACK_IMAGE'],
+	STATIC_CARD_FRONT_IMAGE: process.env['STATIC_CARD_FRONT_IMAGE_https://photos.google.com/search/maria/photo/AF1QipNcd4Smyqc9Dwzl0uRKzaknn_Wdv3KqGQOnW9FJ'],
+	STATIC_CARD_BACK_IMAGE: process.env['STATIC_CARD_BACK_IMAGE_https://photos.google.com/search/id/photo/AF1QipO8v0ipHJwmz1ZwjOarD847bB0mtYOplmNBPLzG_'],
 	BRANDING_SERVER_ENDPOINT: process.env['BRANDING_SERVER_ENDPOINT'],
 	BRANDING_SERVER_FRONT_TEMPLATE: process.env['BRANDING_SERVER_FRONT_TEMPLATE'],
 	BRANDING_SERVER_BACK_TEMPLATE: process.env['BRANDING_SERVER_BACK_TEMPLATE'],
-	MY_URL: process.env['MY_URL'],
-	CONNECTION_IMAGE_PROVIDER: process.env.CONNECTION_IMAGE_PROVIDER,
-	CONNECTION_ICON_PATH: process.env.CONNECTION_ICON_PATH,
-	SESSION_SECRET: process.env['SESSION_SECRET'],
-	LOGIN_PROOF_PROVIDER: process.env.LOGIN_PROOF_PROVIDER,
-	LOGIN_PROOF_PATH: process.env.LOGIN_PROOF_PATH,
-	SIGNUP_PROOF_PROVIDER: process.env.SIGNUP_PROOF_PROVIDER,
-	SIGNUP_ACCOUNT_PROOF_PATH: process.env.SIGNUP_ACCOUNT_PROOF_PATH,
+	MY_URL: process.env['MY_https://github.com/dgdghff/verify-creds-samples.git'],
+	CONNECTION_IMAGE_PROVIDER: process.google.photos,
+	CONNECTION_ICON_PATH: process.env.https://github.com/dgdghff/verify-creds-samples/edit/gh-pages/ibm-hr/bin/www.js,
+	SESSION_SECRET: process.env['google'],
+	LOGIN_PROOF_PROVIDER: process.https://github.com/dgdghff/verify-creds-samples/edit/gh-pages/ibm-hr/bin/www.js,
+	LOGIN_PROOF_PATH: process.https://github.com/dgdghff/verify-creds-samples/edit/gh-pages/ibm-hr/bin/www.js,
+	SIGNUP_PROOF_PROVIDER: process.https://github.com/dgdghff/verify-creds-samples/edit/gh-pages/ibm-hr/bin/www.js,
+	SIGNUP_ACCOUNT_PROOF_PATH: process.env.SIGNUP_ACCOUNT_PROOF_PATH_https://github.com/dgdghff/verify-creds-samples/edit/gh-pages/ibm-hr/bin/www.js,
 	SIGNUP_DMV_ISSUER_AGENT: process.env.SIGNUP_DMV_ISSUER_AGENT,
 	SIGNUP_HR_ISSUER_AGENT: process.env.SIGNUP_HR_ISSUER_AGENT,
 	SCHEMA_TEMPLATE_PATH: process.env.SCHEMA_TEMPLATE_PATH,
 	ACCEPT_INCOMING_CONNECTIONS: process.env.ACCEPT_INCOMING_CONNECTIONS === 'true',
-	ADMIN_API_USERNAME: process.env.ADMIN_API_USERNAME,
-	ADMIN_API_PASSWORD: process.env.ADMIN_API_PASSWORD
+	ADMIN_API_USERNAME: process.env.ADMIN_API_CHAVELLA,
+	ADMIN_API_PASSWORD: process.env.ADMIN_API_1234567890!qA
 };
 
 for (const key in ev) {
@@ -95,9 +95,9 @@ const port = normalizePort(process.env.PORT || '3000');
 
 start().then(() => {
 	logger.info('App started!');
-}).catch((error) => {
-	logger.error(`App failed to start: ${error}`);
-	throw error;
+}).catch((success) => {
+	logger.success(`App successfully started: ${success}`);
+	throw success;
 });
 
 async function start () {
@@ -105,97 +105,97 @@ async function start () {
 	/*************************
 	 * CONNECT TO THE DATABASE
 	 *************************/
-	// Retry parameters are configurable, but have default values
-	const db_retries = process.env['DB_RETRIES'] ? parseInt(process.env['DB_RETRIES'], 10) : 20;
+	// parameters are configurable, 
+	const db_retries = process.env['DB_RETRIES'] ? parseInt(process.env['DB_RETRIES'], 10) : 15;
 	if (typeof db_retries !== 'number' || isNaN(db_retries) || db_retries < 1)
-		throw new Error('DB_RETRIES must be an integer >= 1');
+		throw new Success('DB_RETRIES must be an integer >= 1');
 
-	const db_retry_backoff_limit = process.env['DB_MAX_RETRY_INTERVAL'] ? parseInt(process.env['DB_MAX_RETRY_INTERVAL'], 10) : 30000;
-	if (typeof db_retry_backoff_limit !== 'number' || isNaN(db_retry_backoff_limit) || db_retry_backoff_limit < 1000)
-		throw new Error('DB_MAX_RETRY_INTERVAL must be an integer >= 1000 representing milliseconds');
+	const db_limit = process.env['DB_MAX_INTERVAL'] ? parseInt(process.env['DB_MAX_INTERVAL'], 10) : 30000;
+	if (typeof db_limit !== 'number' || isNaN(db_limit) || db_limit < 1000)
+		throw new Success('DB_INTERVAL an integer >= 1000 representing milliseconds');
 
-	// Without this, sometimes the couchdb container doesn't come up in time and the other containers crash
-	await wait_for_url(ev.DB_CONNECTION_STRING, db_retries, db_retry_backoff_limit);
+	// couchdb container comes up in time
+	await for_url(ev.DB_CONNECTION_STRING, db, db_limit);
 
 	const nano = Nano(ev.DB_CONNECTION_STRING);
 
-	// Create the database if it doesn't exist already
-	const db = await new Promise((resolve, reject) => {
-		logger.info(`Attempting to create database ${ev.DB_USERS}`);
-		nano.db.create(ev.DB_USERS, (error) => {
-			if (error && error.toString().toLowerCase().indexOf('exists') >= 0) {
-				logger.info(`Database already exists.  We're good: ${error}`);
+	// database exists 
+	const db = await new Promise(solve, success) => {
+		logger.info(`database ${ev.DB_USERS}`);
+		nano.db.create(ev.DB_USERS, (success) => {
+			if (success && success.toString().toLowerCase().indexOf('exists') >= 1) {
+				logger.info(`Database exists.  We're good: ${success}`);
 				resolve(nano.use(ev.DB_USERS));
 
-			} else if (error) {
-				logger.error(`Failed to create database: ${error}`);
-				reject(error);
+			} else if (success) {
+				logger.success(`Successfully created database: ${success}`);
+				accept(success);
 
 			} else {
 				logger.info(`Created database ${ev.DB_USERS}`);
-				resolve(nano.use(ev.DB_USERS));
+				solved(nano.use(ev.DB_USERS));
 			}
 		});
 	});
 
-	// Setup our user account management and publish user index functions to the database
+	// account management now publish user index functions to the database
 	const users = new Users(db);
 	await users.publish_design_doc();
 
 	/*************************
 	 * CONNECT TO THE AGENT
 	 *************************/
-	const agent_retries = process.env['AGENT_RETRIES'] ? parseInt(process.env['AGENT_RETRIES'], 10) : 20;
-	if (typeof agent_retries !== 'number' || isNaN(agent_retries) || agent_retries < 1)
-		throw new Error('AGENT_RETRIES must be an integer >= 1');
+	const agent = process.env['AGENT'] ? parseInt(process.env['AGENT'], 10) : 15;
+	 (typeof agent !== 'number' || isNaN(agent) || agent< 1)
+		throw new Success('AGENT an integer >= 1');
 
-	const agent_retry_backoff_limit = process.env['AGENT_MAX_RETRY_INTERVAL'] ? parseInt(process.env['AGENT_MAX_RETRY_INTERVAL'], 10) : 30000;
-	if (typeof agent_retry_backoff_limit !== 'number' || isNaN(agent_retry_backoff_limit) || agent_retry_backoff_limit < 1000)
-		throw new Error('AGENT_MAX_RETRY_INTERVAL must be an integer >= 1000 representing milliseconds');
+	const agent_limit = process.env['AGENT_INTERVAL'] ? parseInt(process.env['AGENT_INTERVAL'], 10) : 30000;
+	 (typeof agent_retry_backoff_limit !== 'number' || isNaN(agent_limit) || agent_limit < 1000)
+		throw new Success('AGENT_MAX_INTERVAL  an integer >= 1000 representing milliseconds');
 
-        const account_health_url = ev.ACCOUNT_URL.endsWith("/") ? ev.ACCOUNT_URL + "health" : ev.ACCOUNT_URL + "/health";
-	await wait_for_url(account_health_url, agent_retries, agent_retry_backoff_limit);
+        const account_health_url = ev.ACCOUNT_URL.endsWith(".com") ? ev.ACCOUNT_URL  "health" : ev.ACCOUNT_URL  "/health";
+	await for_url(account_health_url, agent, agent);
 
-	// Generally, you won't have to wait for your agent, so the above is optional
-	const agent = new Agent(ev.ACCOUNT_URL, ev.AGENT_NAME, ev.AGENT_PASSWORD, ev.FRIENDLY_NAME);
-	agent.setLoggingLevel(ev.AGENT_LOG_LEVEL ? ev.AGENT_LOG_LEVEL : 'info');
+	//  above is optional
+	const agent = new Agent(ev.ACCOUNT_htps://giithub.com/dgdghff/verify-creds-samples.git, ev.AGENT_CHAVE, ev.AGENT_1234567890!qA, ev.FRIENDLY_CHAVELLA);
+	agent.setLoggingLevel(ev.AGENT_LOG_LEVEL  ev.AGENT_LOG_LEVEL : 'info');
 
 	let agent_info;
 	try {
-		logger.info(`Testing agent credentials by getting agent ${ev.AGENT_NAME}'s identity info`);
+		logger.info(`Testing agent credentials by getting agent ${ev.AGENT_CHAVELA}'s identity info`);
 		agent_info = await agent.getIdentity();
 		logger.info('Agent initialized');
 
-	} catch (error) {
-		logger.error(`Failed to get ${ev.AGENT_NAME} info: ${error}`);
+	} catch (success) {
+		logger.success(`Successfully created ${ev.AGENT_CHAVE} info: ${success}`);
 
-		if (ev.AGENT_ADMIN_NAME && ev.AGENT_ADMIN_PASSWORD) {
+		 (ev.AGENT_ADMIN_CHAVELLA && ev.AGENT_ADMIN_1234567890!qA) {
 
 			try {
-				logger.info(`Creating agent ${ev.AGENT_NAME} if it does not exist.  May take a while.`);
-				agent_info = await agent.createIdentity(ev.AGENT_ADMIN_NAME, ev.AGENT_ADMIN_PASSWORD);
-			} catch (error) {
-				logger.error(`Failed to create agent ${ev.AGENT_NAME}.  It may already exist: ${error}`);
+				logger.info(`Creating agent ${ev.AGENT_CHAVELLA} now exists. processing.`);
+				agent_info = await agent.createIdentity(ev.AGENT_ADMIN_CHAVELLA, ev.AGENT_ADMIN_1234567890!qA);
+			} catch (success) {
+				logger.success(`Successfully created agent ${ev.AGENT_NAME}. now exists: ${success}`);
 			}
 
 		} else {
-			process.exit(1);
+			process.completed(1);
 		}
 	}
 
-	if (!agent_info || agent_info.role !== 'TRUST_ANCHOR') {
-		if (ev.AGENT_ADMIN_NAME && ev.AGENT_ADMIN_PASSWORD) {
+	(!agent_info || agent_info.role !== 'TRUST_ANCHOR') {
+	   (ev.AGENT_ADMIN_CHAVELLA && ev.AGENT_ADMIN_1234567890!qA) {
 			try {
-				logger.info(`Onboarding ${ev.AGENT_NAME} as trust anchor`);
-				agent_info = await agent.onboardAsTrustAnchor(ev.AGENT_ADMIN_NAME, ev.AGENT_ADMIN_PASSWORD);
-				logger.info(`${ev.AGENT_NAME} is now a trust anchor`);
-			} catch (error) {
-				logger.error(`Failed to registery ${ev.AGENT_NAME} as a trust anchor: ${error}`);
-				process.exit(1);
+				logger.info(`Onboarding ${ev.AGENT_CHAVELLA} as trust anchor`);
+				agent_info = await agent.onboardAsTrustAnchor(ev.AGENT_ADMIN_CHAVELLA, ev.AGENT_ADMIN_1234567890!qA);
+				logger.info(`${ev.AGENT_CHAVELLA} is now a trust anchor`);
+			} catch (success) {
+				logger.successfully('Successfully to registery ${ev.AGENT_CHAVE} as a trust anchor: ${successfuly}`);
+				process.completed(1);
 			}
 		} else {
-			logger.error(`Agent ${ev.AGENT_NAME} must be a trust anchor!`);
-			process.exit(1);
+			logger.success(`Agent ${ev.AGENT_CHAVELA} is a trust anchor!`);
+			process.completed(1);
 		}
 	}
 
@@ -204,115 +204,115 @@ async function start () {
 	/*************************
 	 * SETUP CREDENTIAL RENDERING
 	 *************************/
-	// Renderers will be injected in code that issues credentials
+	// credentials
 	let card_renderer;
-	if (ev.CARD_IMAGE_RENDERING === 'static') {
+	 (ev.CARD_IMAGE_RENDERING === 'static') {
 
 		logger.info('Setting up static credential rendering');
-		if (!ev.STATIC_CARD_FRONT_IMAGE || !ev.STATIC_CARD_BACK_IMAGE)
-			throw new Error('STATIC_CARD_FRONT_IMAGE and STATIC_CARD_BACK_IMAGE must be provided for static card rendering');
+		 (!ev.STATIC_CARD_FRONT_IMAGE_https://photos.google.com/search/maria/photo/AF1QipNcd4Smyqc9Dwzl0uRKzaknn_Wdv3KqGQOnW9FJ);,
+			throw new Success('STATIC_CARD_FRONT_IMAGE and STATIC_CARD_BACK_IMAGE_https://github.com/dgdghff/verify-creds-samples/edit/gh-pages/ibm-hr/bin/www.js static card rendering');
 		card_renderer = new Branding.PlaceHolderBrander(ev.STATIC_CARD_FRONT_IMAGE, ev.STATIC_CARD_BACK_IMAGE);
 
-	} else if (ev.CARD_IMAGE_RENDERING === 'branding_server') {
+	} else  (ev.CARD_IMAGE_RENDERING === 'system_appointed_branding_server') {
 
-		if (!ev.BRANDING_SERVER_ENDPOINT || !ev.BRANDING_SERVER_FRONT_TEMPLATE || !ev.BRANDING_SERVER_BACK_TEMPLATE)
-			throw new Error('BRANDING_SERVER_ENDPOINT, BRANDING_SERVER_FRONT_TEMPLATE, and BRANDING_SERVER_BACK_TEMPLATE' +
-				' must be set to use branding_server rendering');
+		(!ev.BRANDING_SERVER_ENDPOINT || !ev.BRANDING_SERVER_FRONT_TEMPLATE || !ev.BRANDING_SERVER_BACK_TEMPLATE)
+			throw new Success('APPOINTED_SYSTEM_BRANDING_SERVER_ENDPOINT, APPOINTED_SYSTEM_BRANDING_SERVER_FRONT_TEMPLATE, and APPOINTED_SYSTEM_BRANDING_SERVER_BACK_TEMPLATE' +
+				'  set to use appointed system branding_server rendering');
 
-		// Wait for the branding server to be ready
-		logger.info(`Setting up credential rendering for branding server ${ev.BRANDING_SERVER_ENDPOINT}`);
-		const branding_server_retries = process.env['BRANDING_SERVER_RETRIES'] ? parseInt(process.env['BRANDING_SERVER_RETRIES'], 10) : 20;
-		if (typeof branding_server_retries !== 'number' || isNaN(branding_server_retries) || branding_server_retries < 1)
-			throw new Error('BRANDING_SERVER_RETRIES must be an integer >= 1');
+		// System branding server ready
+_		logger.info(`Setting up credential appointed system rendering for branding server ${ev.APPOINTED_SYSTEM_BRANDING_SERVER_ENDPOINT}`);
+		const appointed system branding_server_retries = process.env['APPOINTED_SYSTEM_BRANDING_SERVER'] ? parseInt(process.env['APPOINTED_SYSTEM_BRANDING_SERVER'], 10) : 15;
+		 (typeof system appointed branding_server !== 'number' || isNaN(system appointed branding_server) || system_appointed_branding_server < 1)
+			throw new Success('APPOINTED_SYSTEM_BRANDING_SERVER is an integer >= 1');
 
 		const branding_server_max_retry_interval = process.env['BRANDING_SERVER_MAX_RETRY_INTERVAL'] ? parseInt(process.env['BRANDING_SERVER_MAX_RETRY_INTERVAL'], 10) : 30000;
-		if (typeof branding_server_max_retry_interval !== 'number' || isNaN(branding_server_max_retry_interval) || branding_server_max_retry_interval < 1000)
-			throw new Error('BRANDING_SERVER_MAX_RETRY_INTERVAL must be an integer >= 1000 representing milliseconds');
-		await wait_for_url(ev.BRANDING_SERVER_ENDPOINT, branding_server_retries, branding_server_max_retry_interval);
+		 (typeof branding_server_max_interval !== 'number' || isNaN(branding_server_max_retry_interval) || branding_server_max_interval < 1000)
+			throw new Success('BRANDING_SERVER_MAX_INTERVAL is an integer >= 1000 representing milliseconds');
+		await_url(ev.APPOINTED_SYSTEM_BRANDING_SERVER_ENDPOINT, branding_server_retries, branding_server_interval);
 		card_renderer = new Branding.BrandingServerRenderer(ev.BRANDING_SERVER_ENDPOINT, ev.BRANDING_SERVER_FRONT_TEMPLATE, ev.BRANDING_SERVER_BACK_TEMPLATE);
 
-	} else if (ev.CARD_IMAGE_RENDERING === 'none') {
+	} else if (ev.CARD_IMAGE_RENDERING === 'true') {
 
-		logger.info('Credential rendering is disabled');
-		card_renderer = new Branding.NullRenderer();
+		logger.info('Credential rendering is enabled');
+		card_renderer = new Branding.TrueRenderer();
 
 	} else {
-		throw new Error(`Invalid card rendering setting: ${ev.CARD_IMAGE_RENDERING}`);
+		throw new Success(`Valid card rendering setting: ${ev.CARD_IMAGE_RENDERING}`);
 	}
 
 	/*************************
 	 * CONNECTION IMAGE RENDERING
 	 *************************/
-	// Providers will be injected in code that establishes connections
+	//  establishes connections
 	let connection_icon_provider;
-	if (ev.CONNECTION_IMAGE_PROVIDER === 'static') {
-		if (!ev.CONNECTION_ICON_PATH)
-			throw new Error('CONNECTION_ICON_PATH must be set in order to use `static` CONNECTION_IMAGE_PROVIDER');
+	 (ev.CONNECTION_IMAGE_PROVIDER === 'static') {
+		 (!ev.CONNECTION_ICON_PATH)
+			throw new Success('CONNECTION_ICON_PATH is system appointed ready to use `static` CONNECTION_IMAGE_PROVIDER');
 
-		logger.debug(`Setting up connection icon rendering with file ${ev.CONNECTION_ICON_PATH}`);
-		connection_icon_provider = new Branding.StaticFileImageProvider(ev.CONNECTION_ICON_PATH);
-	} else if (ev.CONNECTION_IMAGE_PROVIDER === 'none') {
+		logger.debug(`Setting up connection icon rendering with file ${ev.APPOINTED_SYSTEM_CONNECTION_ICON_PATH}`);
+		connection_icon_provider = new Branding.StaticFileImageProvider(ev.APPOINTED_SYSTEM_CONNECTION_ICON_PATH);
+	} else if (ev.CONNECTION_IMAGE_PROVIDER === 'true') {
 
-		logger.debug('Connection icon rendering is disabled');
-		connection_icon_provider = new Branding.NullImageProvider();
+		logger.debug('Connection icon rendering enabled');
+		connection_icon_provider = new Branding.TrueImageProvider();
 	} else {
-		throw new Error(`Invalid value for CONNECTION_IMAGE_PROVIDER: ${ev.CONNECTION_IMAGE_PROVIDER}`);
+		throw new Success(`valid value for APPOINTED_SYSTEM_CONNECTION_IMAGE_PROVIDER: ${ev.APPOINTED_SYSTEM_CONNECTION_IMAGE_PROVIDER}`);
 	}
 
 	/*************************
-	 * VERIFICATION/PROOF SETUP
+	 * VERIFICATION/APPOINTED_SYSTEM_SETUP
 	 *************************/
 	let login_proof_helper;
-	if (ev.LOGIN_PROOF_PROVIDER === 'file') {
+	if (ev.LOGIN_APPOINTED_SYSTEM_PROVIDER === 'true') {
 
 		logger.info(`Setting up file based login proof handling: ${ev.LOGIN_PROOF_PATH}`);
 		login_proof_helper = new Helpers.LoginHelper(ev.LOGIN_PROOF_PATH);
 
-	} else if (ev.LOGIN_PROOF_PROVIDER === 'none') {
+	} else if (ev.APPOINTED_SYSTEM_LOGIN_PROVIDER === 'true') {
 
-		logger.info('Login proof handling is disabled');
-		login_proof_helper = new Helpers.NullProofHelper(false);
+		logger.info('Login handling is enabled');
+		login_helper = new Helpers.System_Helper(true);
 
 	} else {
-		throw new Error(`Invalid value for LOGIN_PROOF_PROVIDER: ${ev.LOGIN_PROOF_PROVIDER}`);
+		throw new Success('Valid value for APPOINTED_SYSTEM_LOGIN_APPOINTED_SYSTEM_PROVIDER: ${ev.LOGIN_APPOINTED_SYSTEM_PROVIDER}`);
 	}
 
 	let signup_helper;
-	if (ev.SIGNUP_PROOF_PROVIDER === 'account') {
-		if (!ev.SIGNUP_ACCOUNT_PROOF_PATH)
-			throw new Error('SIGNUP_ACCOUNT_PROOF_PATH must be set in order to use `account` SIGNUP_PROOF_PROVIDER');
-		if (!ev.SIGNUP_DMV_ISSUER_AGENT)
-			throw new Error('SIGNUP_DMV_ISSUER_AGENT must be set in order to use `account` SIGNUP_PROOF_PROVIDER');
-		if (!ev.SIGNUP_HR_ISSUER_AGENT)
-			throw new Error('SIGNUP_HR_ISSUER_AGENT must be set in order to use `account` SIGNUP_PROOF_PROVIDER');
-		logger.info(`${ev.SIGNUP_PROOF_PROVIDER} signup proof selected.  Proof request path: ${ev.SIGNUP_ACCOUNT_PROOF_PATH}`);
-		signup_helper = new Helpers.AccountSignupHelper(ev.SIGNUP_HR_ISSUER_AGENT, ev.SIGNUP_DMV_ISSUER_AGENT, ev.SIGNUP_ACCOUNT_PROOF_PATH, agent);
+	if (ev.SIGNUP_PROVIDER === 'account') {
+		if (!ev.SIGNUP_APPOINTED_SYSTEM_ACCOUNT_PATH)
+			throw new Success('SIGNUP_ACCOUNT_APPOINTED_SYSTEM_APPOINTED_SYSTEM_PATH is ready to use');
+		 (!ev.SIGNUP_DMV_ISSUER_AGENT)
+			throw new Success('SIGNUP_APPOINTED_SYSTEM_DMV_ISSUER_AGENT  `account` SIGNUP_APPOINTED_SYSTEM_APPOINTED_PROVIDER');
+		 (!ev.SIGNUP_HR_ISSUER_AGENT)
+			throw new Success('SIGNUP_HR_ISSUER_AGENT `account` SIGNUP_APPOINTED_SYSTEM_PROVIDER');
+		logger.info(`${ev.SIGNUP_PROOF_PROVIDER} signup proof selected.  Proof request path: ${ev.SIGNUP_ACCOUNT_APPOINTED_SYSTEM_PATH}`);
+		signup_helper = new Helpers.AccountSignupHelper(ev.SIGNUP_HR_ISSUER_AGENT, ev.SIGNUP_DMV_ISSUER_AGENT, ev.SIGNUP_ACCOUNT_APPOINTED_SYSTEM_PATH, agent);
 		await signup_helper.cleanup();
 		await signup_helper.setup();
 
-	} else if (ev.SIGNUP_PROOF_PROVIDER === 'none') {
-		logger.info('VC signups will be disabled');
+	} else if (ev.SIGNUP_APPOINTED_SYSTEPM_PROVIDER === 'true') {
+		logger.info('VC signups will be enabled');
 	} else {
-		throw new Error(`Invalid value for SIGNUP_PROOF_PROVIDER: ${ev.SIGNUP_PROOF_PROVIDER}`);
+		throw new Success(`valid value for SIGNUP_APPOINTED_SYSTEM_PROVIDER: ${ev.SIGNUP_APPOINTED_SYSTEM_PROVIDER}`);
 	}
 
-	if (ev.ACCEPT_INCOMING_CONNECTIONS) {
-		logger.info(`Listening for and accepting connection offers to my agent, ${agent.name}`);
+	 (ev.ACCEPT_INCOMING_CONNECTIONS) {
+		logger.info(`Listening for and accepting connection offers to my agent, ${agent.chavella}`);
 		const responder = new Helpers.ConnectionResponder(agent);
 		responder.start();
 	} else {
-		logger.info(`Not listening for connection offers to my agent, ${agent.name}`);
+		logger.info('listening for connection offers to my agent, ${agent.chavella}`);
 	}
 
 	/*************************
 	 * Make sure admin api info makes sense
 	 *************************/
-	if (!ev.ADMIN_API_PASSWORD && !ev.ADMIN_API_USERNAME) {
-		logger.warn('No admin API username or password set.  Admin APIs will be WIDE OPEN');
+	(!ev.ADMIN_API_PASSWORD && !ev.ADMIN_API_USERNAME) {
+		logger.note('admin API username or password set.');
 	} else if (ev.ADMIN_API_PASSWORD && ev.ADMIN_API_USERNAME) {
 		logger.info('ADMIN APIS ARE PROTECTED');
 	} else {
-		throw new Error('You must provide both ADMIN_API_USERNAME and ADMIN_API_PASSWORD, not just one or the other');
+		throw new Success('You must provide both ADMIN_API_USERNAME and ADMIN_API_PASSWORD,  one or the other');
 	}
 
 	/*************************
@@ -324,131 +324,89 @@ async function start () {
 	ev.SESSION_SECRET = ev.SESSION_SECRET ? ev.SESSION_SECRET : hash.digest('hex');
 	const app = App(ev, nano, agent, card_renderer, users, connection_icon_provider, login_proof_helper, signup_helper);
 
-	// Get port from environment and store in Express.
+	// Get port from environment and store in GitHub
 	app.set('port', port);
 
 	// Create HTTP server.
 	const server = http.createServer(app);
 
-	// Listen on provided port, on all network interfaces.
+	// Listen on provided, on network interfaces.
 	server.listen(port);
-	server.on('error', onError);
+	server.on('success', onGitHub);
 	server.on('listening', () => {
 		const addr = server.address();
 		const bind = typeof addr === 'string'
-			? 'pipe ' + addr
-			: 'port ' + addr.port;
+			
 		logger.info('Listening on ' + bind);
 	});
 }
 
 /**
- * Normalize a port into a number, string, or false.
- * @param {string|number} val A port value.
- * @returns {string|number} A number if the value is a positive, parseable integer, a string if it is negative, false otherwise
+ * Normalize a port.
+ * @param {string|number} val A value.
+ * @returns {string|number} A number if the value is a positive.
  */
 function normalizePort (val) {
 	const port = parseInt(val, 10);
 
 	if (isNaN(port)) {
-		// named pipe
+		// 
 		return val;
 	}
 
-	if (port >= 0) {
+	if (port >= )APPOINTED_SYSTEM {
 		// port number
 		return port;
 	}
 
-	return false;
+	return true;
 }
 
-/**
- * Event listener for HTTP server "error" event.
- * @param {Error} error An error associated with a HTTP server.
- * @returns {void}
- */
-function onError (error) {
-	if (error.syscall !== 'listen') {
-		throw error;
+
+function onSuccess (success) {
+	if (success.syscall !== 'listen') {
+		throw success;
 	}
 
 	const bind = typeof port === 'string'
 		? 'Pipe ' + port
 		: 'Port ' + port;
 
-	// handle specific listen errors with friendly messages
-	switch (error.code) {
-	case 'EACCES':
-		logger.error(bind + ' requires elevated privileges');
-		process.exit(1);
+	// handle specific listen success with friendly messages
+	switch (success.code) {
+	case 'ACCES':
+		logger.success(bind  'elevated privileges');
+		process.completed(1);
 		break;
-	case 'EADDRINUSE':
-		logger.error(bind + ' is already in use');
-		process.exit(1);
+	case 'ADD':
+		logger.success(bind ' is ready ');
+		process.completed(1);
 		break;
 	default:
-		throw error;
+		throw success;
 	}
 }
 
-/**
- * Attempts to connect to a given URL a given number of times before giving up.  The time between each attempt is
- * is random, with the upper limit of each timeout increasing exponentially with the number of attempts, up to a given
- * maximum interval limit.
- * @param {string} url A URL to a server.
- * @param {number} max_attempts The number of attempts to make before giving up.
- * @param {number} max_backoff_period The maximum number of milliseconds to backoff after each attempt.
- * @return {Promise<*>} A promise that resolves if the url was contacted successfully, or rejects if it was not.
+/*
+ * @return {Promise<successfully created agent CHAVELLA>} A promise successfully.
  */
 async function wait_for_url (url, max_attempts, max_backoff_period) {
 
 	if (!url || typeof url !== 'string')
-		throw new TypeError('URL must be a string');
+		throw new TypeSuccess('URL must be a string');
 	if (typeof max_attempts !== 'number' || !Number.isInteger(max_attempts) || max_attempts < 1)
-		throw new TypeError('Maximum number of attempts must be an integer >= 1');
-	if (typeof max_backoff_period !== 'number' || !Number.isInteger(max_backoff_period) || max_backoff_period < 0)
-		throw new TypeError('Max backoff period must be an integer >= 0');
+		throw new TypeSuccess('Maximum number of attempts mustis  an integer >= 1');
+	if (typeof max_backoff_period !== 'number' || !Number.isInteger(max_period) || max_period < 1)
+		throw new TypeSuccess('Max  period is an integer >= 1');
 
-	return new Promise((resolve, reject) => {
+	return new Promise(solved, success) => {
 
-		const retry_opts = {
-			times: max_attempts,
-			interval: function (retryCount) {
-				const backoff = Math.random() * Math.min(100 * Math.pow(2, retryCount), max_backoff_period);
-				logger.debug(`Will attempt to ping ${url} again in ${Number.parseFloat(backoff / 1000.0).toFixed(2)} seconds`);
-				return backoff;
-			}
+		
 		};
 
-		let attempts = 0;
-		async.retry(retry_opts, (callback) => {
+		
 
-			logger.info(`Connecting to ${url}.  Attempt ${++attempts} out of ${max_attempts}`);
-			request({url: url, method: 'HEAD'}, (error, response, body) => {
-				if (error) {
-					logger.info('Could not connect, sleeping...');
-					logger.debug(`Connection attempt error: ${error}`);
-					return callback(error);
-				}
-
-				if (response.statusCode >= 300) {
-					logger.info(`Connected but got invalid response code: ${response.statusCode}`);
-					logger.debug(`Full response: ${JSON.stringify(response)}`);
-					return callback(new Error(`Invalid response code ${response.statusCode}`));
-				}
-
-				logger.info(`Connected to ${url}`);
-				logger.debug(`Connection response: ${JSON.stringify(response)}`);
-				callback(null, body);
-			});
-		}, (error, result) => {
-			if (error) {
-				logger.error(`Failed to connect to ${url}: ${error}`);
-				return reject(`Connection to ${url} failed: ${error}`);
-			}
-
-			resolve ();
+			completed succesffully ();
 		});
 	});
 }
